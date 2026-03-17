@@ -70,10 +70,10 @@
 
         .frame-inner-overlay {
             position: absolute;
-            top: 50px;
-            left: 50px;
-            right: 50px;
-            bottom: 50px;
+            top: clamp(10px, 2vh, 40px);
+            left: clamp(10px, 2vw, 40px);
+            right: clamp(10px, 2vw, 40px);
+            bottom: clamp(10px, 2vh, 40px);
             border: 1px solid var(--gold-accent);
             background-color: rgba(201, 149, 110, 0.02);
             z-index: 5;
@@ -88,16 +88,20 @@
             width: 90%;
             max-width: 90%;
             transition: opacity 1s ease;
-            padding: 0 20px;
+            padding: clamp(15px, 2vw, 25px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .title-label {
             font-family: 'Playfair Display', serif;
-            font-size: 5.5rem;
+            font-size: clamp(1.8rem, 5vw, 8rem);
             color: var(--text-red);
             font-weight: 700;
-            letter-spacing: 8px;
-            margin-bottom: 60px;
+            letter-spacing: clamp(2px, 0.6vw, 10px);
+            margin-bottom: clamp(8px, 2.5vh, 32px);
             opacity: 0;
             text-transform: uppercase;
             text-align: center;
@@ -111,23 +115,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 1.5rem;
-            margin-bottom: 40px;
+            margin-top: clamp(0.2rem, 1vh, 1.2rem);
+            margin-bottom: clamp(8px, 2.5vh, 35px);
             position: relative;
             width: 100%;
             flex-direction: row;
+            gap: clamp(12px, 5.5vw, 220px);
         }
 
         .name-txt {
             font-family: 'Allura', cursive;
-            font-size: 8.5rem;
+            font-size: clamp(1.8rem, 7vw, 11.5rem);
             color: var(--text-red);
             flex: 0;
             font-weight: 400;
             line-height: 1.2;
             opacity: 0;
             filter: drop-shadow(2px 2px 4px rgba(184, 87, 122, 0.15));
-            max-width: 500px;
+            max-width: clamp(70px, 35vw, 550px);
             white-space: nowrap;
             text-align: center;
         }
@@ -144,15 +149,13 @@
         .name-l {
             text-align: right;
             position: relative;
-            left: -250px;
-            top: -50px;
+            top: calc(-1 * clamp(6px, 2vh, 38px));
         }
 
         .name-r {
             text-align: left;
             position: relative;
-            top: 100px;
-            left: 60px;
+            top: clamp(10px, 3.5vh, 75px);
         }
 
         .loaded .name-l {
@@ -184,8 +187,8 @@
 
 
         .song-hy-wrap {
-            width: 300px;
-            height: 300px;
+            width: clamp(70px, 17vw, 350px);
+            height: clamp(70px, 17vw, 350px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -200,7 +203,7 @@
         }
 
         .song-hy-icon {
-            font-size: 10rem;
+            font-size: clamp(4rem, 9vw, 14.5rem);
             color: var(--gold-accent);
             line-height: 1;
             opacity: 1;
@@ -224,10 +227,10 @@
 
         .thank-you-msg {
             font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
+            font-size: clamp(0.9rem, 1.5vw, 2.3rem);
             color: var(--text-red);
-            margin-top: 20px;
-            margin-bottom: 35px;
+            margin-top: clamp(6px, 2vh, 20px);
+            margin-bottom: clamp(8px, 2.2vh, 28px);
             opacity: 0;
             white-space: normal;
             display: block;
@@ -243,14 +246,14 @@
 
 
         .footer-date-container {
-            margin-top: 15px;
+            margin-top: clamp(6px, 1.5vh, 16px);
             display: flex;
             flex-direction: column;
             align-items: center;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
-            gap: 5px;
+            gap: clamp(1px, 0.8vw, 5px);
             letter-spacing: 3px;
         }
 
@@ -290,8 +293,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0;
-            padding: 0;
+            gap: clamp(4px, 1.2vw, 22px);
+            padding: clamp(2px, 0.6vh, 12px) clamp(8px, 1.8vw, 30px);
             opacity: 0;
             flex-direction: column;
         }
@@ -302,10 +305,10 @@
 
         .date-solar {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: clamp(1.6rem, 3.2vw, 6.5rem);
             font-weight: 700;
             color: var(--text-red);
-            letter-spacing: 4px;
+            letter-spacing: clamp(1px, 0.25vw, 5px);
             text-align: center;
             flex: 1;
             opacity: 0;
@@ -321,16 +324,16 @@
 
         .date-lunar-col {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
+            font-size: clamp(0.8rem, 1.05vw, 1.6rem);
             font-weight: 500;
             color: var(--text-red);
             letter-spacing: 3px;
             text-align: center;
-            line-height: 1.8;
+            line-height: 1.5;
             text-transform: uppercase;
             flex: 1;
             opacity: 0;
-            margin-top: 15px;
+            margin-top: clamp(4px, 1vh, 18px);
         }
 
         .date-lunar-text {
@@ -480,8 +483,8 @@
 
         .flower-corner {
             position: absolute;
-            width: 260px;
-            height: 260px;
+            width: clamp(90px, 15vw, 320px);
+            height: clamp(90px, 15vw, 320px);
             z-index: 10;
             pointer-events: none;
             opacity: 0;
@@ -497,26 +500,26 @@
 
 
         .fc-tl {
-            top: -30px;
-            left: -30px;
+            top: calc(-1 * clamp(8px, 1.5vw, 20px));
+            left: calc(-1 * clamp(8px, 1.5vw, 20px));
             transform-origin: top left;
         }
 
         .fc-tr {
-            top: -30px;
-            right: -30px;
+            top: calc(-1 * clamp(8px, 1.5vw, 20px));
+            right: calc(-1 * clamp(8px, 1.5vw, 20px));
             transform-origin: top right;
         }
 
         .fc-bl {
-            bottom: -30px;
-            left: -30px;
+            bottom: calc(-1 * clamp(8px, 1.5vh, 20px));
+            left: calc(-1 * clamp(8px, 1.5vw, 20px));
             transform-origin: bottom left;
         }
 
         .fc-br {
-            bottom: -30px;
-            right: -30px;
+            bottom: calc(-1 * clamp(8px, 1.5vh, 20px));
+            right: calc(-1 * clamp(8px, 1.5vw, 20px));
             transform-origin: bottom right;
         }
 
@@ -611,183 +614,7 @@
         }
 
 
-        @media (min-width: 1900px) {
-            .name-txt {
-                font-size: 9rem;
-                max-width: 380px;
-            }
 
-            .solar-date {
-                font-size: 4rem;
-            }
-
-            .lunar-date {
-                font-size: 2rem;
-            }
-
-            .song-hy-icon {
-                font-size: 18rem;
-            }
-
-            .thank-you-msg {
-                font-size: 3.2rem;
-                margin-top: 80px;
-            }
-
-            .flower-corner {
-                width: 420px;
-                height: 420px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .title-label {
-                font-size: 3rem;
-                letter-spacing: 5px;
-            }
-
-            .name-txt {
-                font-size: 5rem;
-                max-width: 160px;
-            }
-
-            .center-group {
-                gap: 60px;
-                margin-top: 2rem;
-            }
-
-            .song-hy-icon {
-                font-size: 9rem;
-            }
-
-            .song-hy-wrap {
-                width: 120px;
-                height: 120px;
-            }
-
-            .thank-you-msg {
-                font-size: 1.6rem;
-                margin-top: 40px;
-                white-space: normal;
-                text-align: center;
-                padding: 0 20px;
-            }
-
-            .solar-date {
-                font-size: 2.2rem;
-                padding: 6px 30px;
-            }
-
-            .lunar-date {
-                font-size: 1.1rem;
-            }
-
-            .footer-date-container {
-                margin-top: 20px;
-            }
-
-            .flower-corner {
-                width: 200px;
-                height: 200px;
-            }
-
-            .frame-inner-overlay {
-                top: 25px;
-                left: 25px;
-                right: 25px;
-                bottom: 25px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .title-label {
-                font-size: 2rem;
-                letter-spacing: 3px;
-                margin-bottom: 0;
-                white-space: nowrap;
-            }
-
-            .name-txt {
-                font-size: 2.8rem;
-                max-width: 100px;
-            }
-
-            .center-group {
-                gap: 28px;
-                margin-top: 1.2rem;
-            }
-
-            .song-hy-icon {
-                font-size: 6.5rem;
-            }
-
-            .song-hy-wrap {
-                width: 90px;
-                height: 90px;
-            }
-
-            .thank-you-msg {
-                font-size: 1.2rem;
-                margin-top: 24px;
-                white-space: normal;
-                padding: 0 16px;
-            }
-
-            .footer-date-container {
-                margin-top: 14px;
-            }
-
-            .date-day {
-                font-size: 3.5rem;
-            }
-
-            .date-middle {
-                padding: 8px 16px;
-                gap: 12px;
-            }
-
-            .date-month,
-            .date-year {
-                font-size: 0.95rem;
-                letter-spacing: 6px;
-            }
-
-            .flower-corner {
-                width: 140px;
-                height: 140px;
-            }
-
-            .fc-tl {
-                top: -15px;
-                left: -15px;
-            }
-
-            .fc-tr {
-                top: -15px;
-                right: -15px;
-            }
-
-            .fc-bl {
-                bottom: -15px;
-                left: -15px;
-            }
-
-            .fc-br {
-                bottom: -15px;
-                right: -15px;
-            }
-
-            .frame-inner-overlay {
-                top: 15px;
-                left: 15px;
-                right: 15px;
-                bottom: 15px;
-            }
-
-            .content-container {
-                width: 92%;
-            }
-        }
     </style>
 </head>
 

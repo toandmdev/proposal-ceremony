@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lễ Dạm Ngõ - Thanh Kim & Mạnh Toản</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%23F3EFE6'/><text y='.9em' font-size='75' x='50%' dominant-baseline='top' text-anchor='middle' fill='%23A31D1D'>囍</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #F5E6E0;
+            --gold-accent: #C9956E;
+            --text-red: #B8577A;
+            --song-hy-pink: #E8B4C8;
+            --light-gold: rgba(201, 149, 110, 0.2);
+        }
+
+        @font-face {
+            font-family: 'Daughter';
+            src: url('font/1.ttf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'TitleFont';
+            src: url('font/4.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .main-card {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-paper);
+            background-image:
+                linear-gradient(rgba(243, 239, 230, 0.1), rgba(243, 239, 230, 0.1)),
+                url('http://googleusercontent.com/image_generation_content/0');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            isolation: isolate;
+        }
+
+        .frame-inner-overlay {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            bottom: 50px;
+            border: 1px solid var(--gold-accent);
+            background-color: rgba(201, 149, 110, 0.02);
+            z-index: 5;
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            width: 80%;
+            max-width: 1100px;
+            transition: opacity 1s ease;
+            padding: 0 20px;
+        }
+
+        .title-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-red);
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 25px;
+            opacity: 0;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .loaded .title-label {
+            animation: fadeInDown 1.2s ease forwards 0.2s;
+        }
+
+        .center-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            margin-top: 1.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            width: 100%;
+            flex-direction: row;
+        }
+
+        .name-txt {
+            font-family: 'Allura', cursive;
+            font-size: 8.5rem;
+            color: var(--text-red);
+            flex: 0;
+            font-weight: 400;
+            line-height: 1.2;
+            opacity: 0;
+            filter: drop-shadow(2px 2px 4px rgba(184, 87, 122, 0.15));
+            max-width: 500px;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .name-txt::before {
+            content: '';
+        }
+
+        .name-l::after {
+            content: '';
+            display: none;
+        }
+
+        .name-l {
+            text-align: right;
+        }
+
+        .name-r {
+            text-align: left;
+            position: relative;
+            top: 30px;
+        }
+
+        .loaded .name-l {
+            animation:
+                slideInLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.8s,
+                nameGlow 5s ease-in-out 2.6s infinite;
+        }
+
+        .loaded .name-r {
+            animation:
+                slideInRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 1s,
+                nameGlow 5s ease-in-out 5s infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% {
+                filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.05));
+                color: #a83060;
+            }
+            30% {
+                filter: drop-shadow(0 0 18px rgba(220, 80, 140, 0.9));
+                color: #e0407a;
+            }
+            60% {
+                filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.05));
+                color: #a83060;
+            }
+        }
+
+
+        .song-hy-wrap {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            transform: scale(1);
+            margin: 0;
+        }
+
+        .loaded .song-hy-wrap {
+            animation: zoomInSongHy 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.3s;
+        }
+
+        .song-hy-icon {
+            font-size: 10rem;
+            color: var(--gold-accent);
+            line-height: 1;
+            opacity: 1;
+            animation: pulseHeartGlow 2s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 6px rgba(184, 87, 122, 0.2));
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes pulseHeartGlow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(201, 149, 110, 0.3);
+            }
+            50% {
+                transform: scale(1.08);
+                text-shadow: 0 0 30px rgba(201, 149, 110, 0.6);
+            }
+        }
+
+
+        .thank-you-msg {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--text-red);
+            margin-top: 20px;
+            margin-bottom: 35px;
+            opacity: 0;
+            white-space: normal;
+            display: block;
+            font-style: italic;
+            line-height: 2.1;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.5px;
+        }
+
+        .loaded .thank-you-msg {
+            animation: fadeInUp 1.2s ease forwards 1.6s;
+        }
+
+
+        .footer-date-container {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 5px;
+            letter-spacing: 3px;
+        }
+
+        .date-month {
+            display: none;
+        }
+
+        .loaded .date-month {
+            animation: fadeInUp 0.8s ease forwards 2.2s;
+        }
+
+        .date-divider {
+            display: none;
+        }
+
+        .loaded .date-divider:nth-child(2) {
+            animation: expandLine 0.6s ease forwards 2.6s;
+        }
+
+        .loaded .date-divider:nth-child(4) {
+            animation: expandLine 0.6s ease forwards 3.2s;
+        }
+
+        @keyframes expandLine {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        .date-middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+            opacity: 0;
+            flex-direction: column;
+        }
+
+        .loaded .date-middle {
+            animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.8s;
+        }
+
+        .date-solar {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--text-red);
+            letter-spacing: 4px;
+            text-align: center;
+            flex: 1;
+            opacity: 0;
+        }
+
+        .date-solar-text {
+            transition: all 0.3s ease;
+        }
+
+        .loaded .date-solar {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 2s;
+        }
+
+        .date-lunar-col {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-red);
+            letter-spacing: 3px;
+            text-align: center;
+            line-height: 1.8;
+            text-transform: uppercase;
+            flex: 1;
+            opacity: 0;
+            margin-top: 15px;
+        }
+
+        .date-lunar-text {
+            transition: all 0.3s ease;
+        }
+
+        .loaded .date-lunar-col {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 2.2s;
+        }
+
+
+        .rose-petal {
+            position: absolute;
+            z-index: 30;
+            pointer-events: none;
+            animation: roseFall linear infinite;
+        }
+
+        .glitter {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            z-index: 12;
+            pointer-events: none;
+            box-shadow: 0 0 10px #fff;
+            animation: twinkle var(--dur) ease-in-out infinite;
+        }
+
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-150px);
+                filter: blur(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(150px);
+                filter: blur(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes zoomInSongHy {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+
+            70% {
+                opacity: 1;
+                transform: scale(1.1) rotate(0deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+                text-shadow: 0 0 10px rgba(248, 187, 208, 0.2);
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.95;
+                text-shadow: 0 0 30px rgba(220, 80, 120, 0.8);
+            }
+        }
+
+        @keyframes roseFall {
+            0% {
+                top: -10%;
+                transform: rotate(0deg) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                top: 110%;
+                transform: rotate(360deg) translateX(120px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+
+        .flower-corner {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .flower-corner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            display: block;
+        }
+
+
+        .fc-tl {
+            top: -30px;
+            left: -30px;
+            transform-origin: top left;
+        }
+
+        .fc-tr {
+            top: -30px;
+            right: -30px;
+            transform-origin: top right;
+        }
+
+        .fc-bl {
+            bottom: -30px;
+            left: -30px;
+            transform-origin: bottom left;
+        }
+
+        .fc-br {
+            bottom: -30px;
+            right: -30px;
+            transform-origin: bottom right;
+        }
+
+
+        .fc-tl img {
+            transform: scaleX(-1);
+        }
+
+        .fc-bl img {
+            transform: scale(-1, -1);
+        }
+
+        .fc-br img {
+            transform: scaleY(-1);
+        }
+
+
+        .loaded .fc-tl {
+            animation: fcEnterTL 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s, fcSway 9s ease-in-out 1.8s infinite;
+        }
+
+        .loaded .fc-tr {
+            animation: fcEnterTR 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s, fcSway 9s ease-in-out 2s infinite;
+        }
+
+        .loaded .fc-bl {
+            animation: fcEnterBL 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.7s, fcSway 9s ease-in-out 2.2s infinite;
+        }
+
+        .loaded .fc-br {
+            animation: fcEnterBR 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.9s, fcSway 9s ease-in-out 2.4s infinite;
+        }
+
+        @keyframes fcEnterTL {
+            0% {
+                opacity: 0;
+                transform: translate(-40px, -40px) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes fcEnterTR {
+            0% {
+                opacity: 0;
+                transform: translate(40px, -40px) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes fcEnterBL {
+            0% {
+                opacity: 0;
+                transform: translate(-40px, 40px) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes fcEnterBR {
+            0% {
+                opacity: 0;
+                transform: translate(40px, 40px) scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        @keyframes fcSway {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.02) rotate(0.8deg);
+            }
+        }
+
+
+        @media (min-width: 1900px) {
+            .name-txt {
+                font-size: 9rem;
+                max-width: 380px;
+            }
+
+            .solar-date {
+                font-size: 4rem;
+            }
+
+            .lunar-date {
+                font-size: 2rem;
+            }
+
+            .song-hy-icon {
+                font-size: 18rem;
+            }
+
+            .thank-you-msg {
+                font-size: 3.2rem;
+                margin-top: 100px;
+            }
+
+            .flower-corner {
+                width: 420px;
+                height: 420px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .title-label {
+                font-size: 3rem;
+                letter-spacing: 5px;
+            }
+
+            .name-txt {
+                font-size: 5rem;
+                max-width: 160px;
+            }
+
+            .center-group {
+                gap: 60px;
+                margin-top: 2rem;
+            }
+
+            .song-hy-icon {
+                font-size: 9rem;
+            }
+
+            .song-hy-wrap {
+                width: 120px;
+                height: 120px;
+            }
+
+            .thank-you-msg {
+                font-size: 1.6rem;
+                margin-top: 40px;
+                white-space: normal;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .solar-date {
+                font-size: 2.2rem;
+                padding: 6px 30px;
+            }
+
+            .lunar-date {
+                font-size: 1.1rem;
+            }
+
+            .footer-date-container {
+                margin-top: 20px;
+            }
+
+            .flower-corner {
+                width: 200px;
+                height: 200px;
+            }
+
+            .frame-inner-overlay {
+                top: 25px;
+                left: 25px;
+                right: 25px;
+                bottom: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .title-label {
+                font-size: 2rem;
+                letter-spacing: 3px;
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+
+            .name-txt {
+                font-size: 2.8rem;
+                max-width: 100px;
+            }
+
+            .center-group {
+                gap: 28px;
+                margin-top: 1.2rem;
+            }
+
+            .song-hy-icon {
+                font-size: 6.5rem;
+            }
+
+            .song-hy-wrap {
+                width: 90px;
+                height: 90px;
+            }
+
+            .thank-you-msg {
+                font-size: 1.2rem;
+                margin-top: 24px;
+                white-space: normal;
+                padding: 0 16px;
+            }
+
+            .footer-date-container {
+                margin-top: 14px;
+            }
+
+            .date-day {
+                font-size: 3.5rem;
+            }
+
+            .date-middle {
+                padding: 8px 16px;
+                gap: 12px;
+            }
+
+            .date-month,
+            .date-year {
+                font-size: 0.95rem;
+                letter-spacing: 6px;
+            }
+
+            .flower-corner {
+                width: 140px;
+                height: 140px;
+            }
+
+            .fc-tl {
+                top: -15px;
+                left: -15px;
+            }
+
+            .fc-tr {
+                top: -15px;
+                right: -15px;
+            }
+
+            .fc-bl {
+                bottom: -15px;
+                left: -15px;
+            }
+
+            .fc-br {
+                bottom: -15px;
+                right: -15px;
+            }
+
+            .frame-inner-overlay {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .content-container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-card">
+
+        <div class="frame-inner-overlay"></div>
+
+        <div class="content-container" id="main-content">
+            <div class="title-label">Lễ Dạm Ngõ</div>
+
+            <div class="center-group">
+
+                <div class="name-txt name-l">Thanh&#10;Kim</div>
+
+                <div class="song-hy-wrap">
+                    <div class="song-hy-icon">囍</div>
+                </div>
+
+
+                <div class="name-txt name-r">Mạnh&#10;Toản</div>
+            </div>
+
+            <div class="thank-you-msg">
+                Chúng con xin cảm ơn gia đình hai bên đã yêu thương và vun đắp cho chúng con
+            </div>
+
+            <div class="footer-date-container">
+                <div class="date-month">Tháng Ba</div>
+                <div class="date-divider"></div>
+                <div class="date-middle">
+                    <div class="date-solar">
+                        <div class="date-solar-text">22/03/2026</div>
+                    </div>
+                    <div class="date-lunar-col">
+                        <div class="date-lunar-text">04/02<br>Bính Ngọ</div>
+                    </div>
+                </div>
+                <div class="date-divider"></div>
+            </div>
+        </div>
+
+        <div class="flower-corner fc-tl">
+            <img src="2.png" alt="">
+        </div>
+
+        <div id="fx-layer"></div>
+    </div>
+
+    <script>
+        const content = document.getElementById('main-content');
+
+        function runPresentationLoop() {
+            content.style.opacity = "0";
+            setTimeout(() => {
+                document.body.classList.remove('loaded');
+                void document.body.offsetWidth;
+                content.style.opacity = "1";
+                document.body.classList.add('loaded');
+            }, 1000);
+        }
+
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            setInterval(runPresentationLoop, 13000);
+
+            const fx = document.getElementById('fx-layer');
+            function createPetal() {
+                const p = document.createElement('div');
+                p.className = 'rose-petal';
+                const size = Math.random() * 20 + 10 + 'px';
+                p.style.width = size; p.style.height = size;
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = Math.random() * 8 + 8 + 's';
+                const colors = ['#D32F2F', '#FFB7C5', '#FCE4EC', '#FFFFFF'];
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.borderRadius = '50% 0 50% 50%';
+                fx.appendChild(p);
+                setTimeout(() => p.remove(), 16000);
+            }
+            setInterval(createPetal, 500);
+
+            for (let i = 0; i < 50; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'glitter';
+                const size = Math.random() * 3 + 2 + 'px';
+                sparkle.style.width = size; sparkle.style.height = size;
+                sparkle.style.left = Math.random() * 100 + 'vw'; sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.setProperty('--dur', (Math.random() * 3 + 2) + 's');
+                sparkle.style.animationDelay = (Math.random() * 5) + 's';
+                fx.appendChild(sparkle);
+            }
+        });
+    </script>
+</body>
+
+</html>
